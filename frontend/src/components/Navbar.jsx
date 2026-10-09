@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import {assets} from '../assets/assets'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, Links, NavLink } from 'react-router-dom'
 
 
 const Navbar = () => {
@@ -9,8 +9,8 @@ const [visible, setVisible] = useState(false)
 
     return (
     <div className='flex items-center justify-between font-medium '>
-        <img src={assets.website_logo} alt="Website Logo" className='w-20 sm:w-30'  />
-        <ul className='hidden sm:flex gap-5  text-gray-700'>
+       <Link to="/"> <img src={assets.website_logo} alt="Website Logo" className='w-20 sm:w-30'  /></Link>
+        <ul className='hidden sm:flex gap-10  text-gray-700'>
             <NavLink to="/" className='flex flex-col items-center gap-1'>
                 <p className='uppercase'>Home</p>
                 <hr  className='w-2/4 border-none h-[1.5px] bg-gray-700 hidden'/>
@@ -63,10 +63,10 @@ const [visible, setVisible] = useState(false)
                     <img className='h-4 rotate-180' src={assets.dropdown_icon} alt="" />
                     <p>Back</p>
                 </div>
-                <NavLink onClick={()=>setVisible(false)} className='py-2 pl-6 border' to="/">HOME</NavLink>
-                <NavLink onClick={()=>setVisible(false)} className='py-2 pl-6 border' to="/collection">COLLECTION</NavLink>
-                <NavLink onClick={()=>setVisible(false)} className='py-2 pl-6 border' to="/about">ABOUT</NavLink>
-                <NavLink onClick={()=>setVisible(false)} className='py-2 pl-6 border' to="/contact">CONTACT </NavLink>
+                <NavLink onClick={()=>setVisible(false)} className='py-2 pl-6 border border-black' to="/">HOME</NavLink>
+                <NavLink onClick={()=>setVisible(false)} className='py-2 pl-6 borde border-black' to="/collection">COLLECTION</NavLink>
+                <NavLink onClick={()=>setVisible(false)} className='py-2 pl-6 border border-black' to="/about">ABOUT</NavLink>
+                <NavLink onClick={()=>setVisible(false)} className='py-2 pl-6 border  border-black' to="/contact">CONTACT </NavLink>
 
             </div>
         </div>

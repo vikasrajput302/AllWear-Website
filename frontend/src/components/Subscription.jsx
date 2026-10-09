@@ -1,0 +1,21 @@
+import React from 'react'
+
+const Subscription = () => {
+    const onSubmitHandler = (e)=>{
+        e.preventDefault();
+        
+    }
+  return (
+    <div className='text-center'>
+       <p className='text-2xl font-medium text-gray-800'>Subscribe now & get 20% off</p> 
+       <p className='text-gray-400 mt-3 '>Get exclusive offers, new collection updates, and style inspiration delivered straight to your inbox.</p>
+       <form onSubmit={onSubmitHandler}
+        className='w-full sm:w-1/2 flex items-center border gap-3  mx-auto pl-6 my-6'>
+        <input type="email" placeholder='Enter your email' className='w-full sm:flex-1 outline-none' />
+        <button className='text-white bg-black text-xs px-10 py-4 '>Subscribe</button>
+       </form>
+    </div>
+  )
+}
+
+export default Subscription
