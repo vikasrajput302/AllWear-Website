@@ -12,7 +12,7 @@ const {setShowSearch,getCartCount} = useContext(ShopContext);
 
     return (
     <div className='flex items-center justify-between font-medium '>
-       <Link to="/"> <img src={assets.website_logo} alt="Website Logo" className='w-20 sm:w-30'  /></Link>
+       <Link to="/"> <img src={assets.website_logo} alt="Website Logo" className='w-20 sm:w-28 m-[-4px] sm:m-[-10px]'  /></Link>
         <ul className='hidden sm:flex gap-10  text-gray-700'>
             <NavLink to="/" className='flex flex-col items-center gap-1'>
                 <p className='uppercase'>Home</p>
@@ -40,9 +40,9 @@ const {setShowSearch,getCartCount} = useContext(ShopContext);
             <img onClick={()=> setShowSearch(true)} src={assets.search_icon} className='w-5 cursor-pointer'  alt="search_icon" />
 
             <div className='group relative'>
-                <img src={assets.profile_icon} className='w-5 cursor-pointer' alt="" />
+                <Link to='/login'><img src={assets.profile_icon} className='w-5 cursor-pointer' alt="" /></Link>
                 <div className='group-hover:block hidden absolute dropdown-menu right-0 pt-4'>
-                    <div className='flex flex-col gap-2 w-36 py-3 px-5 bg-slate-100 text-gray-500 rounded'>
+                    <div className='flex flex-col gap-2 w-36 max-w-[calc(100vw-1rem)] pt-3 pb-0 px-5 bg-slate-100 text-gray-500 rounded'>
                         <p className='cursor-pointer hover:text-black'>My Profile</p>
                         <p className='cursor-pointer hover:text-black'>Orders</p>
                         <p className='cursor-pointer hover:text-black'>Logout</p>
