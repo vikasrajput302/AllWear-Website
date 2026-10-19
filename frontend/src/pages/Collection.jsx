@@ -83,7 +83,7 @@ const Collection = () => {
   return (
     <div className='flex flex-col sm:flex-row gap-6 sm:gap-10 pt-6 sm:pt-10 border-t'>
         {/* Filter option */}
-      <div className='w-full sm:w-60 sm:min-w-60 sm:flex-shrink-0'>
+      <div className='w-full sm:w-60 sm:min-w-60 sm:shrink-0'>
           <p onClick={()=> setShowFilter(!showFilter)} className='my-2 text-xl flex items-center cursor-pointer gap-2 '>Filters
              <img className={`h-3 sm:hidden ${showFilter ? 'rotate-90': ''} `} src={assets.dropdown_icon} alt="" />
           </p>
