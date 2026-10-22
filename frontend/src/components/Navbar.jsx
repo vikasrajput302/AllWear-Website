@@ -66,9 +66,9 @@ const {setShowSearch,getCartCount} = useContext(ShopContext);
                     <img className='h-4 rotate-180' src={assets.dropdown_icon} alt="" />
                     <p>Back</p>
                 </div>
-                <NavLink onClick={()=>setVisible(false)} className='py-2 pl-6 border border-black' to="/">HOME</NavLink>
-                <NavLink onClick={()=>setVisible(false)} className='py-2 pl-6 borde border-black' to="/collection">COLLECTION</NavLink>
-                <NavLink onClick={()=>setVisible(false)} className='py-2 pl-6 border border-black' to="/about">ABOUT</NavLink>
+                <NavLink onClick={()=>setVisible(false)} className='py-2 pl-6 border border-b-0 border-black' to="/">HOME</NavLink>
+                <NavLink onClick={()=>setVisible(false)} className='py-2 pl-6 border border-b-0 border-black' to="/collection">COLLECTION</NavLink>
+                <NavLink onClick={()=>setVisible(false)} className='py-2 pl-6 border border-b-0 border-black' to="/about">ABOUT</NavLink>
                 <NavLink onClick={()=>setVisible(false)} className='py-2 pl-6 border  border-black' to="/contact">CONTACT </NavLink>
 
             </div>
