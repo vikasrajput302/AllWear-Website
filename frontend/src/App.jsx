@@ -15,7 +15,11 @@ import SeachBar from './components/SeachBar'
 import 'react-toastify/dist/ReactToastify.css'
 import{ToastContainer , toast} from 'react-toastify'
 
+
+
+
 const App = () => {
+  
   return (
     <div className="px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw]">
       <ToastContainer/>
