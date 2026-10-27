@@ -8,7 +8,7 @@ import app from './src/app.js';
 //App Config-------
 
 const port = process.env.PORT || 3000;
-connectDB();
+ await connectDB()
 connectCloudinary();
 
 
