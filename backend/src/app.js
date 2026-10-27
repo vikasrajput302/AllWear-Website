@@ -7,7 +7,7 @@ import cartRouter from "./routes/cartRoute.js";
 import orderRouter from "./routes/orderRoute.js";
 import connectDB from "./config/mongodb.js";
 
-
+ await connectDB()
 const app = express();
 
 
