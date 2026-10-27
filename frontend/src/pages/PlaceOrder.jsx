@@ -6,6 +6,7 @@ import { ShopContext } from '../context/ShopContext'
 import axios from 'axios'
 import { toast } from 'react-toastify'
 
+
 const PlaceOrder = () => {
   const {navigate,backendUrl,token,cartItems,setCartItems,getCartAmount,delivery_fee,products} = useContext(ShopContext);
   const [method, setMethod] = useState('cod');
@@ -29,6 +30,36 @@ const PlaceOrder = () => {
       [name]: value
     }));
   }
+const initPay = (order) =>{
+  const options = {
+    key : import.meta.env.VITE_RAZORPAY_KEY_ID,
+    amount : order.amount,
+    currency : order.currency,
+    name : 'Order Payment',
+    description : 'Order Payment',
+    order_id : order.id,
+    receipt : order.receipt,
+    handler : async (response) => {
+      console.log(response);
+      try {
+        const {data} = await axios.post(backendUrl + '/api/order/verifyRazorpay',response,{headers:{token}})
+        if (data.success) {
+          navigate('/orders')
+          setCartItems({})
+        }
+      } catch (error) {
+        console.log(error);
+        toast.error(error.mesaage)
+        
+      }
+    }
+
+  }
+  const rzp = new window.Razorpay(options)
+  rzp.open()
+}
+
+
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();
@@ -64,7 +95,23 @@ const PlaceOrder = () => {
                 toast.error(response.data.mesaage)
               }
             break;
-        
+        case 'stripe':
+          const responseStripe = await axios.post(backendUrl + '/api/order/place-order-stripe',orderData,{headers:{token}})
+          if (responseStripe.data.success) {
+            const {session_url} = responseStripe.data
+            window.location.replace(session_url)
+          }else{
+            toast.error(responseStripe.data.mesaage)
+          }
+          break;
+
+          case 'razorpay':
+            const responseRazorpay = await axios.post(backendUrl + '/api/order/place-order-razorpay',orderData,{headers:{token}})
+            if (responseRazorpay.data.success) {
+              initPay(responseRazorpay.data.order);
+              
+            }
+            break;
           default:
             break;
         }
@@ -78,7 +125,7 @@ const PlaceOrder = () => {
   return (
     <form onSubmit={onSubmitHandler} className='flex flex-col lg:flex-row justify-between gap-8 lg:gap-10 pt-5 sm:pt-10 lg:pt-14 min-h-[80vh] border-t'>
       {/* --------------left side----------- */}
-      <div className='flex flex-col gap-4 w-full lg:max-w-[480px] lg:flex-1'>
+      <div className='flex flex-col gap-4 w-full lg:max-w-120 lg:flex-1'>
         <div className='text-xl sm:text-2xl my-3'>
           <Title text1={'DELIVERY'} text2={'INFORMATION'}/>
         </div>
